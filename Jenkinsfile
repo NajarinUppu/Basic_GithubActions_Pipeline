@@ -12,7 +12,7 @@ pipeline {
                 sh 'mvn clean package -DskipTests'
              }   
             }
-            stage('Test'){
+        stage('Test'){
                 steps{
                     sh 'mvn test'
                 }
@@ -20,15 +20,12 @@ pipeline {
                     always {
                         junit 'target/surefire-reports/*.xml'
                     }                    }
-                }
-            
-            }
+                }   
         stage('Archive Artifacts')
             {
                 steps {
                     archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
                 }
             }
-
-
         }
+}
