@@ -2,7 +2,7 @@ name: Java CI Pipeline using GitHub Actions
 on:
   push:
     branches: ['main']
-  pull:
+  pull_request:
     branches: ['main']
 jobs:
   build:
