@@ -1,0 +1,21 @@
+name: Java CI Pipeline using GitHub Actions
+on:
+  push:
+    branches: ['main']
+  pull:
+    branches: ['main']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+      - name: Build with MVN package
+        run: mvn clean package
